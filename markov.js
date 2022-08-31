@@ -39,7 +39,6 @@ class MarkovMachine {
     // TODO
     const chain = this.makeChains();
     const keys = Object.keys(chain);
-    // console.log('Keys Array: ', keys);
     let i = 1;
     let prevWord;
     let generatedText = '';
@@ -62,23 +61,10 @@ class MarkovMachine {
         }
       }
     }
-    // console.log(generatedText.trimStart());
+
+    return generatedText.trimStart();
   }
 }
-
-let mm;
-
-fs.readFile('./eggs.txt', 'utf8', (err, data) => {
-  if (err) {
-    console.error(`Error reading path:\n`, err);
-    process.exit(1);
-  }
-  mm = new MarkovMachine(data);
-  const genText = mm.makeText();
-  // let wordArray = genText.split(' ');
-  // console.log(wordArray);
-  // console.log(genText);
-});
 
 module.exports = {
   MarkovMachine,
